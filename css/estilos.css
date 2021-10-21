@@ -1,0 +1,18 @@
+body {
+    background-image: url(../css/Imagen1.png) ;
+    opacity: 4;
+    
+}
+
+
+
+
+/* 
+body{
+    width: 800px;
+    height: 500px;
+    background-image: url(../css/movies.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} */

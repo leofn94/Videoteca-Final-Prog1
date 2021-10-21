@@ -18,12 +18,17 @@ if (isset($_POST['usuario']) && isset($_POST['clave'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Bienvenido al sistema</title>
+        <title>Crear nuevo usuario</title>
         <link rel="stylesheet" href="bootstrap.min.css">
+
+        
+        <link rel="stylesheet" href="css/estilos.css">
+
+
     </head>
     <body class="container">
       <div class="jumbotron text-center">
-      <h1>Sistema bancario</h1>
+      <h1>Videoteca</h1>
       </div>    
       <div class="text-center">
         <h3>Crear nuevo usuario</h3>
@@ -40,7 +45,10 @@ if (isset($_POST['usuario']) && isset($_POST['clave'])) {
             <input name="nombre" class="form-control form-control-lg" placeholder="Nombre"><br>
             <input name="apellido" class="form-control form-control-lg" placeholder="Apellido"><br>
             <input type="submit" value="Registrarse" class="btn btn-primary">
-        </form>        
+        </form>   
+        <form action="index.php" method="post">    <br> 
+        <input type="submit" value="Volver atrás" class="btn btn-primary">
+
       </div> 
     </body>
 </html>
