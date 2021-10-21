@@ -34,6 +34,12 @@ class Pelicula
     public function getUsuario() {return $this->usuario;}
 
 
+
+// public function Editar($NombrePelicula,$anio,$Duracion_Minutos,$CostoBlueRay)
+// {
+
+// }
+
 }
 
 

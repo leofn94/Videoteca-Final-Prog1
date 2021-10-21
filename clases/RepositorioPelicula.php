@@ -105,6 +105,21 @@ class RepositorioPelicula
         return ($query->execute());
     }
 
+    public function editPelicula(Pelicula $pelicula)
+    {
+        $cod = $pelicula->getcod();
+        $NombrePelicula = $pelicula->getNombrePelicula();
+        $anio = $pelicula->getanio();
+        $Duracion_Minutos = $pelicula->getDuracion_Minutos();
+        $CostoBlueRay = $pelicula->getCostoBlueRay();
+        
+
+        $q = "UPDATE peliculas SET NombrePelicula = ? , anio = ? , Duracion_Minutos = ? , CostoBlueRay = ? WHERE cod = ?";
+        $query = self::$conexion->prepare($q);
+        $query->bind_param("siiii", $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+        return ($query->execute());
+
+    }
 
 }
     
