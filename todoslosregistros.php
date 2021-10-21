@@ -21,40 +21,38 @@ if (isset($_SESSION['usuario'])) {
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Videoteca Paradiso</title>
-  <link rel="stylesheet" href="bootstrap.min.css">
-  <link rel="stylesheet" href="css/estiloconsulta.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Videoteca Paradiso</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="css/estiloconsulta.css">
 
 
 </head>
 
 <body class="container">
-  <div class="jumbotron text-center">
-    <h1>Videoteca Paradiso</h1>
-  </div>
-  <div class="text-center">
-    <h3>Hola, <?php echo $nomApe; ?></h3>
-    <p><a href="logout.php">Cerrar sesión</a></p>
-  </div>
+    <div class="jumbotron text-center">
+        <h1>Videoteca Paradiso</h1>
+    </div>
+    <div class="text-center">
+        <h3>Hola, <?php echo $nomApe; ?></h3>
+        <p><a href="logout.php">Cerrar sesión</a></p>
+    </div>
 
+    <br>
+    <h3>Todos los registros</h3>
+    <br>
 
-<BR>
-<h3>Todos los registros</h3>
-<br>
-<table class="table table-striped">
-
-<tr>
-
-<th>Código</th>
-<th>Nombre de la película</th>
-<th>Año</th>
-<th>Duración</th>
-<th>Precio</th>
-
-
-</tr>
+    <table class="table">
+        <thead class="table-success table-striped">
+            <tr>
+                <th>Código</th>
+                <th>Nombre de la película</th>
+                <th>Año</th>
+                <th>Duración</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
 
 <?php
 
@@ -78,5 +76,5 @@ if (count($peliculas) == 0) {
 
 ?>
 
-<a class="btn btn-primary" href="home.php">Volver atrás</a>
-<br><br>
+        <a class="btn btn-primary" href="home.php">Volver atrás</a>
+        <br><br>

@@ -1,3 +1,8 @@
 body {
     background-image: url(../css/fondodegradado.png);
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
 }
