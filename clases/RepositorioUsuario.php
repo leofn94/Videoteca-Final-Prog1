@@ -1,10 +1,20 @@
 <?php
 require_once '.env.php';
 require_once 'Usuario.php';
+require_once 'clases/Repo.php';
 
-class RepositorioUsuario
+
+class RepositorioUsuario extends Repo
 {
-    private static $conexion = null;
+
+    //Si elimino el construct de aca y uso el de Repo tira error al hacer delete
+    //Fatal error: Uncaught Error: Call to a member function bind_param() on bool 
+    //in C:\xampp\htdocs\04-\clases\RepositorioUsuario.php:69 Stack trace: 
+    #0 C:\xampp\htdocs\04-\clases\RepositorioPelicula.php(71): RepositorioUsuario->get_one(1) 
+    #1 C:\xampp\htdocs\04-\delete.php(14): RepositorioPelicula->get_one('132') #2 {main} thrown 
+    //in C:\xampp\htdocs\04-\clases\RepositorioUsuario.php on line 69
+
+    protected static $conexion = null;
 
     public function __construct()
     {

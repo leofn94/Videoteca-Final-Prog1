@@ -3,6 +3,7 @@ require_once 'clases/Usuario.php';
 require_once 'clases/RepositorioPelicula.php';
 require_once 'clases/RepositorioUsuario.php';
 require_once 'clases/Pelicula.php';
+require_once 'clases/Repo.php';
 
 
 session_start();
@@ -15,35 +16,7 @@ if (isset($_SESSION['usuario']) && isset($_POST['NombrePelicula'])  && isset($_P
         die("Error: La película registrada no pertenece al usuario");
     }
 
-// $respuesta['codigo_pelicula'] = $pelicula->getcod();
-// $rp->editPelicula($pelicula);
-
-// }
-
-
-// $respuesta['NombrePelicula'] = $pelicula->getcod();
-// $respuesta['anio'] = $pelicula->getanio();
-// $respuesta['Duracion_Minutos'] = $pelicula->getDuracion_Minutos();
-// $respuesta['CostoBlueRay'] = $pelicula->getCostoBlueRay();
-// $respuesta['resultado'] = "OK";
-// }
-
-// else {
-//     $respuesta['resultado'] = "Error al realizar la operación";
-// }
-
-
-// }
-// }
-
-
-
-
-
-
-
-
-
+//Al querer aplicar los cambios el update no logra aplicarlos
 
 $rp->editPelicula($pelicula);
 $respuesta['resultado'] = "OK";

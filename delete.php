@@ -3,6 +3,8 @@ require_once 'clases/Usuario.php';
 require_once 'clases/RepositorioPelicula.php';
 require_once 'clases/RepositorioUsuario.php';
 require_once 'clases/Pelicula.php';
+require_once 'clases/Repo.php';
+
 
 
 session_start();

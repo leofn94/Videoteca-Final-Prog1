@@ -1,6 +1,7 @@
 <?php
 require_once 'Usuario.php';
-require_once 'RepositorioUsuario.php';
+require_once 'clases/RepositorioUsuario.php';
+require_once 'clases/Repo.php';
 
 class ControladorSesion
 {

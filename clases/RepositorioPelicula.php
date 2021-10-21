@@ -2,28 +2,12 @@
 require_once '.env.php';
 require_once 'clases/usuario.php';
 require_once 'clases/Pelicula.php';
+require_once 'clases/Repo.php';
 
-class RepositorioPelicula
+
+class RepositorioPelicula extends Repo
 {
-    private static $conexion = null;
 
-
-    public function __construct()
-    {
-        if (is_null(self::$conexion)) {
-            $credenciales = credenciales();
-            self::$conexion = new mysqli($credenciales['servidor'],
-                $credenciales['usuario'],
-                $credenciales['clave'],
-                $credenciales['base_de_datos']);
-            if (self::$conexion->connect_error) {
-                $error = 'Error de conexión: ' . self::$conexion->connect_error;
-                self::$conexion = null;
-                die($error);
-            }
-            self::$conexion->set_charset('utf8');
-        }
-    }
 
     public function save(Pelicula $pelicula)
     {

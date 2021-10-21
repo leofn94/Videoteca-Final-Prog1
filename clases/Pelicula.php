@@ -5,7 +5,6 @@ require_once 'clases/Usuario.php';
 class Pelicula
 {
     protected $cod;
-    // protected $id_usuario;
     protected $usuario;
     protected $NombrePelicula;
     protected $anio;

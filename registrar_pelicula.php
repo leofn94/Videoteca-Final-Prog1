@@ -28,10 +28,6 @@ if (isset($_SESSION['usuario'])) {
         <h3>Ingrese los datos de la película:</h3> <br>
         <form action="nueva_pelicula.php" method="post">
 
-<!-- 
-          <label for="Codigo pelicula">Codigo </label>
-          <input type="number" name="cod" value="101" min="101"> <br> <br> -->
-
           <label for="Titulo">Nombre </label>
           <input type="text" name="NombrePelicula" placeholder="Escriba el titulo" required id="NombrePelicula"><br> <br>
 
