@@ -1,17 +1,21 @@
 <?php
 
 require_once 'clases/Usuario.php';
-
+require_once 'clases/RepositorioPelicula.php';
+require_once 'clases/Pelicula.php';
 
 session_start();
 if (isset($_SESSION['usuario'])) {
-  $usuario = unserialize($_SESSION['usuario']);
-  $nomApe = $usuario->getNombreApellido();
+    $usuario = unserialize($_SESSION['usuario']);
+    $nomApe = $usuario->getNombreApellido();
+    $rp = new RepositorioPelicula();
+    $peliculas = $rp->get_all($usuario);
 
 } else {
-  header('Location: index.php');
+    header('Location: index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,12 +40,12 @@ if (isset($_SESSION['usuario'])) {
 
 
   <?php
-        if (isset($_GET['mensaje'])) {
-            echo '<p class="alert alert-primary">'.$_GET['mensaje'].'</p>';
-        }
-        ?>
-        
-<!-- 
+if (isset($_GET['mensaje'])) {
+    echo '<p class="alert alert-primary">' . $_GET['mensaje'] . '</p>';
+}
+?>
+
+<!--
   <div class="container mt-5">
     <div class="row">
 
@@ -73,9 +77,9 @@ if (isset($_SESSION['usuario'])) {
 
 
       </div>
-    
- 
-    
+
+
+
     </div>
 
 
@@ -100,6 +104,51 @@ if (isset($_SESSION['usuario'])) {
 
 <a class="btn btn-primary" href="registrar_pelicula.php">Registrar nueva película</a>
 
+<br><br>
+
+<h3>Listado de películas</h3>
+<br>
+<table class="table table-striped">
+
+<tr>
+
+<th>Código</th>
+<th>Nombre de la película</th>
+<th>Año</th>
+<th>Duración</th>
+<th>Precio</th>
+<th>Editar</th>
+<th>Eliminar</th>
+
+</tr>
+
+<?php
+if (count($peliclas) == 0) {
+    echo "<tr><td colspan='5'>No tiene peliculas registradas</td></tr>";
+} else {
+    foreach ($peliculas as $unapelicula) {
+        $cod = $unacuenta->getcod();
+        echo '<tr>';
+        echo "<td>$cod</td>";
+        echo '<tr>';
+        echo "<td>" . $unapelicula->getcod() . "</td>";
+        echo '<tr>';
+        echo "<td>" . $unapelicula->getNombrePelicula() . "</td>";
+        echo '<tr>';
+        echo "<td>" . $unapelicula->getanio() . "</td>";
+        echo '<tr>';
+        echo "<td>" . $unapelicula->getDuracion_Minutos() . "</td>";
+        echo '<tr>';
+        echo "<td>" . $unapelicula->getCostoBlueRay() . "</td>";
+        echo "<td><button type='button' onclick='Editar($cod)'>Editar</button></td>";
+        echo "<td><a href='eliminar.php?cod=$cod'>Eliminar</a></td>";
+        echo '</tr>';
+
+    }
+
+}
+
+?>
 
 </body>
 

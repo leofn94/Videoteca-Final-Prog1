@@ -32,13 +32,13 @@ class RepositorioPelicula
         $anio = $pelicula->getanio();
         $Duracion_Minutos = $pelicula->getDuracion_Minutos();
         $CostoBlueRay = $pelicula->getCostoBlueRay();
-        $id_usuario = $pelicula->getid_usuario();
+        $idUsuario = $pelicula->getIdUsuario();
 
         $q = "INSERT INTO peliculas (NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, id_usuario) VALUES (?, ?, ?, ?, ?)";
         try {
             $query = self::$conexion->prepare($q);
 
-            $query->bind_param("siiii", $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $id_usuario);
+            $query->bind_param("siiii", $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $idUsuario);
 
             if ($query->execute()) {
                 return self::$conexion->insert_id;
@@ -49,5 +49,31 @@ class RepositorioPelicula
             return false;
         }
     }
+
+    public function get_all(Usuario $usuario)
+    {
+        $idUsuario = $usuario->getId();
+        $q = "SELECT NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, cod, FROM peliculas WHERE id_usuario = ?";
+        try {
+            $query = self::$conexion->prepare($q);
+            $query->bind_param("i", $idUsuario);
+            $query->bind_result($NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+
+            if ($query->execute()) {
+                $listaPeliculas = array();
+                while ($query->fetch()) {
+                    $listaPeliculas[] = new Pelicula ($usuario, $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+                }
+                return $listaPeliculas;
+            }
+            return false;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
+
+        
+    
 
 }
