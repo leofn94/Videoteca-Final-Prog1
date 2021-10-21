@@ -1,9 +1,13 @@
 <?php
+
 require_once 'clases/Usuario.php';
+
+
 session_start();
 if (isset($_SESSION['usuario'])) {
   $usuario = unserialize($_SESSION['usuario']);
   $nomApe = $usuario->getNombreApellido();
+
 } else {
   header('Location: index.php');
 }
@@ -21,16 +25,23 @@ if (isset($_SESSION['usuario'])) {
 
 
 
-<body>
-  <!-- <div class="jumbotron text-center"> -->
-    <!-- <h1>Videoteca Paradiso</h1>
-  </div> -->
-  <!-- <div class="text-center">
+<body class="container">
+  <div class="jumbotron text-center">
+    <h1>Videoteca Paradiso</h1>
+  </div>
+  <div class="text-center">
     <h3>Hola, <?php echo $nomApe; ?></h3>
-    <p><a href="logout.php">Cerrar sesión</a></p> -->
-  <!-- </div> -->
+    <p><a href="logout.php">Cerrar sesión</a></p>
+  </div>
 
 
+  <?php
+        if (isset($_GET['mensaje'])) {
+            echo '<p class="alert alert-primary">'.$_GET['mensaje'].'</p>';
+        }
+        ?>
+        
+<!-- 
   <div class="container mt-5">
     <div class="row">
 
@@ -65,13 +76,14 @@ if (isset($_SESSION['usuario'])) {
     
  
     
-    <!-- </div> -->
+    </div>
 
 
 
-    <div class="col-md-8">
+    <div class="col-md-9">
         <table class="table">
           <thead class="table-success table-striped">
+
             <tr>
               <th>Codigo</th>
               <th>Nombre</th>
@@ -81,9 +93,12 @@ if (isset($_SESSION['usuario'])) {
             <tr>
           </thead>
 
-</tbody>
+        </table>
 
-</div>
+</div> -->
+
+
+<a class="btn btn-primary" href="registrar_pelicula.php">Registrar nueva película</a>
 
 
 </body>
