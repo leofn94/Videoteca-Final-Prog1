@@ -14,35 +14,45 @@ if (isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="css/estilo_registrar_pelicula.css">
+
+    
+
     <title>Registrar película</title>
 </head>
 <body>
 
-    <div class="container mt-5">
+    <!-- <div class="container mt-5">
     <div class="row">
 
 
 
-      <div class="col-md-3">
+      <div class="col-md-10"> -->
+
+</div class="registrar">
 
         <h3>Ingrese los datos de la película:</h3> <br>
         <form action="nueva_pelicula.php" method="post">
 
-          <label for="Titulo">Nombre </label>
+          <label for="Titulo">Nombre </label> <br>
           <input type="text" name="NombrePelicula" placeholder="Escriba el titulo" required id="NombrePelicula"><br> <br>
 
           <label for="Año">Año </label> <br>
           <input type="number" name="anio" placeholder="Año de estreno" min="1900" required id="anio" > <br> <br>
 
-          <label for="Minutos de duración">Duración </label>
+          <label for="Minutos de duración">Duración </label> <br>
           <input type="number" name="Duracion_Minutos" placeholder="Minutos de duración" min="60" required id="Duracion_Minutos"> <br> <br>
 
-          <label for="Precio">Precio </label>
+          <label for="Precio">Precio </label> <br>
           <input type="number" name="CostoBlueRay" placeholder="Ingrese el importe" required id="CostoBlueRay"> <br> <br>
 
-          <input type="submit" value="Ingresar registro"class="btn btn-primary"> <br>
+          <input type="submit" value="Ingresar registro"class="btn btn-success"> <br>
         </form>
-
+        
+</div>
 
 </body>
 </html>

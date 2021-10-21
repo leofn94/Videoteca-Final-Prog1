@@ -8,7 +8,6 @@ require_once 'clases/Repo.php';
 class RepositorioPelicula extends Repo
 {
 
-
     public function save(Pelicula $pelicula)
     {
         $NombrePelicula = $pelicula->getNombrePelicula();
@@ -32,8 +31,6 @@ class RepositorioPelicula extends Repo
             return false;
         }
     }
-
-
 
     public function get_all(Usuario $usuario)
     {
@@ -77,9 +74,8 @@ class RepositorioPelicula extends Repo
             return false;
         }
     }
-
        
-
+    //Elimina un registro
     public function delete(Pelicula $pelicula)
     {
         $cod = $pelicula->getcod();
@@ -89,6 +85,9 @@ class RepositorioPelicula extends Repo
         return ($query->execute());
     }
 
+    
+    //Edita un registro de una película.
+    //Al querer efectuar los cambios, no parece dar resultado
     public function editPelicula(Pelicula $pelicula)
     {
         $cod = $pelicula->getcod();
@@ -105,7 +104,25 @@ class RepositorioPelicula extends Repo
 
     }
 
-}
-    
+    //La funcion muestra todos las peliculas registradas en el videoclub, independientemente de los empleados en particular
 
+    public function registros(Usuario $usuario)
+    {
+        $idUsuario = $usuario->getId();
+        $q = " SELECT NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, cod FROM peliculas WHERE cod = cod" ;
 
+            $query = self::$conexion->prepare($q);
+            $query->bind_param( "i", $idUsuario );
+            $query->bind_result( $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod );
+
+            if ($query->execute()) {
+                $listaPeliculas = array();
+                while ($query->fetch()) {
+                    $listaPeliculas[] = new Pelicula ($usuario, $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod );
+                }
+                return $listaPeliculas;
+            }
+            return false;
+        }
+  
+    }

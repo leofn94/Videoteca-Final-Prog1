@@ -26,10 +26,9 @@ if (isset($_SESSION['usuario'])) {
   <meta name="viewport" content="width=device-width">
   <title>Videoteca Paradiso</title>
   <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="css/estilohome.css">
 
 </head>
-
-
 
 <body class="container">
   <div class="jumbotron text-center">
@@ -47,73 +46,19 @@ if (isset($_GET['mensaje'])) {
 }
 ?>
 
-<!--
-  <div class="container mt-5">
-    <div class="row">
+<a class="btn btn-success" href="registrar_pelicula.php">Registrar nueva película</a>
+
+<a class="btn btn-info" href="todoslosregistros.php">Consultar todos los registros</a>
 
 
-
-      <div class="col-md-3">
-
-        <h3>Ingrese los datos de la película:</h3> <br>
-        <form action="agregardatos.php">
-
-
-          <label for="Codigo pelicula">Codigo </label>
-          <input type="number" name="cod" value="101" min="101"> <br> <br>
-
-          <label for="Titulo">Nombre </label>
-          <input type="text" name="nombre" placeholder="Escriba el titulo"><br> <br>
-
-          <label for="Año">Año </label> <br>
-          <input type="number" name="anio" placeholder="Año de estreno" min="1900"> <br> <br>
-
-          <label for="Minutos de duración">Duración </label>
-          <input type="number" name="anio" placeholder="Minutos de duración" min="60"> <br> <br>
-
-          <label for="Precio">Precio </label>
-          <input type="number" name="Precio" placeholder="Ingrese el importe"> <br> <br>
-
-          <input type="submit" value="Ingresar registro"class="btn btn-primary"> <br>
-        </form>
-
-
-      </div>
-
-
-
-    </div>
-
-
-
-    <div class="col-md-9">
-        <table class="table">
-          <thead class="table-success table-striped">
-
-            <tr>
-              <th>Codigo</th>
-              <th>Nombre</th>
-              <th>Año</th>
-              <th>Duración</th>
-              <th>Precio</th>
-            <tr>
-          </thead>
-
-        </table>
-
-</div> -->
-
-
-<a class="btn btn-primary" href="registrar_pelicula.php">Registrar nueva película</a>
-
-<br><br>
-
+<BR>
 <h3>Listado de películas</h3>
 <br>
+
+<!-- Tablas generadas -->
 <table class="table table-striped">
 
 <tr>
-
 <th>Código</th>
 <th>Nombre de la película</th>
 <th>Año</th>
@@ -121,7 +66,6 @@ if (isset($_GET['mensaje'])) {
 <th>Precio</th>
 <th>Editar</th>
 <th>Eliminar</th>
-
 </tr>
 
 <?php
@@ -146,6 +90,7 @@ if (count($peliculas) == 0) {
 ?>
 <br><br>
 
+<!-- seccion de edicion -->
 <div id="edicion">
 <h3 id="edicion">Edición</h3>
 <input type="hidden" id="cod">
@@ -167,24 +112,16 @@ if (count($peliculas) == 0) {
 <br>
 </div>
 
-
-
 <script> 
 
 function edit() 
 {
-  // var tipo = document.querySelector('#tipo').value;
             var pelicula = document.querySelector('#cod').value;
             var NombrePelicula = document.querySelector('#NombrePelicula').value;
             var anio = document.querySelector('#anio').value;
             var Duracion_Minutos = document.querySelector('#Duracion_Minutos').value;
             var CostoBlueRay = document.querySelector('#CostoBlueRay').value;
-
-            // var cadena = "tipo="+tipo+"&cuenta="+cuenta+"&monto="+monto;
             var cadena = "pelicula="+cod+"&NombrePelicula="+NombrePelicula+"&anio="+anio+"&Duracion_Minutos="+Duracion_Minutos+"&CostoBlueRay="+CostoBlueRay;
-
-
-
 
             var solicitud = new XMLHttpRequest();
 
@@ -203,9 +140,6 @@ function edit()
                     var identificadorPrecio = "#CostoBlueRay-" + respuesta.codigo_pelicula;
                     var celda = document.querySelector(identificadorPrecio);
 
-
-
-
                     if(respuesta.resultado == "OK") {
                         celda.innerHTML = respuesta.nombre;
                     } else {
@@ -219,10 +153,6 @@ function edit()
             solicitud.send(cadena);
 }
 
-
-
-
-
 function Editar(Ncodigo)
 {
   document.querySelector('#cod').value = Ncodigo;
@@ -231,11 +161,6 @@ function Editar(Ncodigo)
 }
 
 </script>
-
-
-
-
-
 
 </body>
 

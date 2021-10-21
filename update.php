@@ -25,8 +25,6 @@ $respuesta['resultado'] = "OK";
     $respuesta['resultado'] = "Error al realizar la operación";
 }
 
-
-
 $respuesta['NombrePelicula'] = $pelicula->getcod();
 $respuesta['anio'] = $pelicula->getanio();
 $respuesta['Duracion_Minutos'] = $pelicula->getDuracion_Minutos();
