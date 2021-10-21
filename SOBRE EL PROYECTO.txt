@@ -1,0 +1,3 @@
+El sistema es administrado tanto por el dueño como por los empleados de una videoteca.
+Cada empleado va cargando las peliculas que entran en stock de manera separada.
+Sin embargo hay una funcion donde se puede consultar todos los titulos en total disponibles en la BBDD.
