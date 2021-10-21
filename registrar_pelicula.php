@@ -33,16 +33,16 @@ if (isset($_SESSION['usuario'])) {
           <input type="number" name="cod" value="101" min="101"> <br> <br> -->
 
           <label for="Titulo">Nombre </label>
-          <input type="text" name="NombrePelicula" placeholder="Escriba el titulo" id="NombrePelicula"><br> <br>
+          <input type="text" name="NombrePelicula" placeholder="Escriba el titulo" required id="NombrePelicula"><br> <br>
 
           <label for="Año">Año </label> <br>
-          <input type="number" name="anio" placeholder="Año de estreno" min="1900" id="anio" > <br> <br>
+          <input type="number" name="anio" placeholder="Año de estreno" min="1900" required id="anio" > <br> <br>
 
           <label for="Minutos de duración">Duración </label>
-          <input type="number" name="Duracion_Minutos" placeholder="Minutos de duración" min="60" id="Duracion_Minutos"> <br> <br>
+          <input type="number" name="Duracion_Minutos" placeholder="Minutos de duración" min="60" required id="Duracion_Minutos"> <br> <br>
 
           <label for="Precio">Precio </label>
-          <input type="number" name="CostoBlueRay" placeholder="Ingrese el importe" id="CostoBlueRay"> <br> <br>
+          <input type="number" name="CostoBlueRay" placeholder="Ingrese el importe" required id="CostoBlueRay"> <br> <br>
 
           <input type="submit" value="Ingresar registro"class="btn btn-primary"> <br>
         </form>

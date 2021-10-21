@@ -123,25 +123,25 @@ if (isset($_GET['mensaje'])) {
 </tr>
 
 <?php
-if (count($peliclas) == 0) {
+if (count($peliculas) == 0) {
     echo "<tr><td colspan='5'>No tiene peliculas registradas</td></tr>";
 } else {
     foreach ($peliculas as $unapelicula) {
-        $cod = $unacuenta->getcod();
+        $cod = $unapelicula->getcod();
         echo '<tr>';
         echo "<td>$cod</td>";
-        echo '<tr>';
-        echo "<td>" . $unapelicula->getcod() . "</td>";
-        echo '<tr>';
-        echo "<td>" . $unapelicula->getNombrePelicula() . "</td>";
-        echo '<tr>';
-        echo "<td>" . $unapelicula->getanio() . "</td>";
-        echo '<tr>';
-        echo "<td>" . $unapelicula->getDuracion_Minutos() . "</td>";
-        echo '<tr>';
-        echo "<td>" . $unapelicula->getCostoBlueRay() . "</td>";
+        // echo '<tr>';
+        // echo "<td>" . $unapelicula->getcod(). "</td>";
+        // echo '<tr>';
+        echo "<td>" . $unapelicula->getNombrePelicula(). "</td>";
+        // echo '<tr>';
+        echo "<td>" . $unapelicula->getanio(). "</td>";
+        // echo '<tr>';
+        echo "<td>" . $unapelicula->getDuracion_Minutos(). "</td>";
+        // echo '<tr>';
+        echo "<td>" . $unapelicula->getCostoBlueRay(). "</td>";
         echo "<td><button type='button' onclick='Editar($cod)'>Editar</button></td>";
-        echo "<td><a href='eliminar.php?cod=$cod'>Eliminar</a></td>";
+        echo "<td><a href='delete.php?cod=$cod'>Eliminar</a></td>";
         echo '</tr>';
 
     }

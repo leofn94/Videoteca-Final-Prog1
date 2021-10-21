@@ -7,7 +7,6 @@ class RepositorioPelicula
 {
     private static $conexion = null;
 
-    //fixme extraer funcionalidad comun a una superclase
 
     public function __construct()
     {
@@ -50,19 +49,21 @@ class RepositorioPelicula
         }
     }
 
+
+
     public function get_all(Usuario $usuario)
     {
         $idUsuario = $usuario->getId();
-        $q = "SELECT NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, cod, FROM peliculas WHERE id_usuario = ?";
+        $q = " SELECT NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, cod FROM peliculas WHERE id_usuario = ? " ;
         try {
             $query = self::$conexion->prepare($q);
-            $query->bind_param("i", $idUsuario);
-            $query->bind_result($NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+            $query->bind_param( "i", $idUsuario );
+            $query->bind_result( $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod );
 
             if ($query->execute()) {
                 $listaPeliculas = array();
                 while ($query->fetch()) {
-                    $listaPeliculas[] = new Pelicula ($usuario, $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+                    $listaPeliculas[] = new Pelicula ($usuario, $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod );
                 }
                 return $listaPeliculas;
             }
@@ -72,8 +73,40 @@ class RepositorioPelicula
         }
     }
 
+    public function get_one($cod)
+    {
+        $q = "SELECT NombrePelicula, anio, Duracion_Minutos, CostoBlueRay, id_usuario FROM peliculas WHERE cod = ?";
+        try {
+            $query = self::$conexion->prepare($q);
+            $query->bind_param("i", $cod);
+            $query->bind_result( $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $idUsuario);
 
-        
-    
+            if ($query->execute()) {
+                if ($query->fetch()) {
+                    $ru = new RepositorioUsuario();
+                    $usuario = $ru->get_one($idUsuario);
+                    return new Pelicula($usuario, $NombrePelicula, $anio, $Duracion_Minutos, $CostoBlueRay, $cod);
+                }
+            }
+            return false;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
+       
+
+    public function delete(Pelicula $pelicula)
+    {
+        $cod = $pelicula->getcod();
+        $q = "DELETE FROM peliculas WHERE cod = ?";
+        $query = self::$conexion->prepare($q);
+        $query->bind_param("i", $cod);
+        return ($query->execute());
+    }
+
 
 }
+    
+
+
